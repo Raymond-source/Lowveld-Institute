@@ -11,6 +11,337 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <link rel="icon" type="image/x-icon" href="images/logo.ico" />
+    <style>
+      /* Modal Styles */
+      .program-modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        animation: fadeIn 0.3s ease;
+      }
+
+      .program-modal-content {
+        background-color: #fff;
+        margin: 5% auto;
+        padding: 30px;
+        border-radius: 8px;
+        width: 90%;
+        max-width: 500px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        animation: slideIn 0.3s ease;
+        position: relative;
+      }
+
+      .program-modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #f0f0f0;
+        padding-bottom: 10px;
+      }
+
+      .program-modal-header h2 {
+        color: #2c3e50;
+        margin: 0;
+        font-size: 1.5rem;
+      }
+
+      .close-program-modal {
+        background: none;
+        border: none;
+        font-size: 1.8rem;
+        cursor: pointer;
+        color: #7f8c8d;
+        transition: color 0.3s;
+        line-height: 1;
+        padding: 0;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .close-program-modal:hover {
+        color: #e74c3c;
+      }
+
+      .program-modal-body {
+        text-align: center;
+        padding: 30px 20px;
+      }
+
+      .program-modal-body i {
+        font-size: 4rem;
+        color: #3498db;
+        margin-bottom: 20px;
+      }
+
+      .program-modal-body h3 {
+        color: #2c3e50;
+        margin-bottom: 15px;
+        font-size: 1.3rem;
+      }
+
+      .program-modal-body p {
+        color: #666;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateY(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* OVERRIDE existing program-item styles from style.css */
+      .programs-detail .programs-list {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+      }
+
+      .programs-detail .program-item {
+        position: relative;
+        display: flex !important;
+        flex-direction: column;
+        height: 100%;
+        background: white !important;
+        border-radius: 16px !important;
+        padding: 25px !important;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1) !important;
+        transition: all 0.4s ease !important;
+        border-left: 8px solid var(--secondary) !important;
+        border: 1px solid rgba(26, 95, 122, 0.1) !important;
+        overflow: visible !important;
+        margin: 0 !important;
+      }
+
+      .programs-detail .program-item:hover {
+        transform: translateY(-10px) !important;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15) !important;
+        border-left: 8px solid var(--secondary) !important;
+      }
+
+      .programs-detail .program-item::before {
+        display: none !important;
+      }
+
+      .programs-detail .program-item-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        position: relative;
+        z-index: 1;
+        gap: 15px;
+      }
+
+      .programs-detail .program-item-header i {
+        font-size: 2.5rem !important;
+        color: var(--primary) !important;
+        margin-right: 0 !important;
+        width: 60px;
+        height: 60px;
+        background: rgba(26, 95, 122, 0.1) !important;
+        border-radius: 12px !important;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .programs-detail .program-item-header h3 {
+        color: var(--primary) !important;
+        font-size: 1.3rem !important;
+        font-weight: 700 !important;
+        margin: 0 !important;
+        line-height: 1.3;
+      }
+
+      .programs-detail .program-item p {
+        position: relative !important;
+        z-index: 1 !important;
+        line-height: 1.8 !important;
+        color: var(--dark) !important;
+        font-size: 1.05rem !important;
+        margin-left: 0 !important;
+        margin-bottom: 20px !important;
+        flex-grow: 1 !important;
+      }
+
+      .program-item-footer {
+        margin-top: auto;
+        padding-top: 20px;
+        text-align: center;
+      }
+
+      .view-details-btn {
+        display: inline-block;
+        background-color: #3498db;
+        color: white;
+        padding: 12px 30px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        font-family: inherit;
+        box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+      }
+
+      .view-details-btn:hover {
+        background-color: #2980b9;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+      }
+
+      .view-details-btn:active {
+        transform: translateY(-1px);
+      }
+
+      /* Responsive grid */
+      @media (max-width: 992px) {
+        .programs-detail .programs-list {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .programs-detail .programs-list {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Responsive Modal Styles */
+      @media (max-width: 992px) {
+        .program-modal-content {
+          margin: 10% auto;
+          padding: 25px;
+          max-width: 90%;
+        }
+
+        .program-modal-body i {
+          font-size: 3.5rem;
+        }
+
+        .program-modal-body h3 {
+          font-size: 1.4rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .program-modal-content {
+          margin: 15% auto;
+          padding: 20px;
+          width: 95%;
+        }
+
+        .program-modal-header h2 {
+          font-size: 1.3rem;
+        }
+
+        .program-modal-body {
+          padding: 20px 15px;
+        }
+
+        .program-modal-body i {
+          font-size: 3rem;
+          margin-bottom: 15px;
+        }
+
+        .program-modal-body h3 {
+          font-size: 1.2rem;
+          margin-bottom: 10px;
+        }
+
+        .program-modal-body p {
+          font-size: 1rem;
+          line-height: 1.5;
+        }
+
+        .view-details-btn {
+          width: 100%;
+          padding: 14px 20px;
+          font-size: 1rem;
+        }
+
+        .program-modal {
+          z-index: 1001;
+        }
+
+        .programs-detail .program-item-header {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .programs-detail .program-item-header i {
+          margin-bottom: 15px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .program-modal-content {
+          margin: 20% auto;
+          padding: 15px;
+          width: 95%;
+        }
+
+        .program-modal-header {
+          padding-bottom: 8px;
+          margin-bottom: 15px;
+        }
+
+        .program-modal-header h2 {
+          font-size: 1.2rem;
+        }
+
+        .close-program-modal {
+          font-size: 1.5rem;
+          width: 25px;
+          height: 25px;
+        }
+
+        .program-modal-body {
+          padding: 15px 10px;
+        }
+
+        .program-modal-body i {
+          font-size: 2.5rem;
+          margin-bottom: 12px;
+        }
+
+        .program-modal-body h3 {
+          font-size: 1.1rem;
+        }
+
+        .program-modal-body p {
+          font-size: 0.95rem;
+        }
+      }
+    </style>
   </head>
   <body>
     <!-- Navigation (same as homepage) -->
@@ -18,7 +349,6 @@
       <div class="container">
         <nav class="navbar">
           <a href="index.html" class="logo">
-            <!-- Replace the text logo with your image logo -->
             <img
               src="images/Logo.png"
               alt="Lowveld Institute Logo"
@@ -88,6 +418,15 @@
               problem-solving, time management, and other essential workplace
               skills.
             </p>
+            <div class="program-item-footer">
+              <button
+                class="view-details-btn"
+                data-program="Employability & Life Skills Workshops"
+                data-icon="fa-chalkboard-teacher"
+              >
+                View Details
+              </button>
+            </div>
           </div>
 
           <div class="program-item">
@@ -100,6 +439,15 @@
               employers. We cover formatting, content, and tailoring for
               specific industries.
             </p>
+            <div class="program-item-footer">
+              <button
+                class="view-details-btn"
+                data-program="CV Writing & Optimization"
+                data-icon="fa-file-alt"
+              >
+                View Details
+              </button>
+            </div>
           </div>
 
           <div class="program-item">
@@ -111,6 +459,15 @@
               Mock interviews, common question practice, body language guidance,
               and techniques to build confidence for job interviews.
             </p>
+            <div class="program-item-footer">
+              <button
+                class="view-details-btn"
+                data-program="Interview Preparation & Coaching"
+                data-icon="fa-comments"
+              >
+                View Details
+              </button>
+            </div>
           </div>
 
           <div class="program-item">
@@ -122,6 +479,15 @@
               Step-by-step guidance on completing job applications, writing
               cover letters, and submitting applications correctly.
             </p>
+            <div class="program-item-footer">
+              <button
+                class="view-details-btn"
+                data-program="Job Application Assistance"
+                data-icon="fa-tasks"
+              >
+                View Details
+              </button>
+            </div>
           </div>
 
           <div class="program-item">
@@ -133,6 +499,15 @@
               Learn to set up and manage professional email accounts for job
               searching and workplace communication.
             </p>
+            <div class="program-item-footer">
+              <button
+                class="view-details-btn"
+                data-program="Creating Professional Email Accounts"
+                data-icon="fa-envelope"
+              >
+                View Details
+              </button>
+            </div>
           </div>
 
           <div class="program-item">
@@ -144,10 +519,38 @@
               Effective techniques for finding job opportunities, networking,
               and personal branding in today's digital job market.
             </p>
+            <div class="program-item-footer">
+              <button
+                class="view-details-btn"
+                data-program="Marketing & Job Search Strategies Workshop"
+                data-icon="fa-search-location"
+              >
+                View Details
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- Modal -->
+    <div id="programModal" class="program-modal">
+      <div class="program-modal-content">
+        <div class="program-modal-header">
+          <h2>Program Details</h2>
+          <button class="close-program-modal">&times;</button>
+        </div>
+        <div class="program-modal-body">
+          <i id="modalIcon" class="fas"></i>
+          <h3 id="modalProgramName"></h3>
+          <p>
+            Program details coming soon. We're currently updating comprehensive
+            information about this program. Please check back later or contact
+            us for more information.
+          </p>
+        </div>
+      </div>
+    </div>
 
     <!-- Call to Action -->
     <section class="programs-cta">
@@ -167,7 +570,6 @@
     <footer class="footer">
       <div class="container">
         <div class="footer-content">
-          <!-- Same footer content as index.html -->
           <div class="footer-logo">
             <h3>Lowveld Institute</h3>
             <p>Amplifying potential & creating opportunities for all.</p>
@@ -214,6 +616,108 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script>
+      // Debug: Check if script is loading
+      console.log("Programs page script loading...");
+
+      // DOM Elements
+      const modal = document.getElementById("programModal");
+      const modalProgramName = document.getElementById("modalProgramName");
+      const modalIcon = document.getElementById("modalIcon");
+      const closeModalBtn = document.querySelector(".close-program-modal");
+
+      // Get all View Details buttons
+      const viewDetailsBtns = document.querySelectorAll(".view-details-btn");
+
+      // Debug: Check how many buttons were found
+      console.log("Found", viewDetailsBtns.length, "View Details buttons");
+
+      // Function to open modal
+      function openModal(programName, iconClass) {
+        console.log("Opening modal for:", programName);
+        modalProgramName.textContent = programName;
+        modalIcon.className = "fas " + iconClass;
+        modal.style.display = "block";
+        document.body.style.overflow = "hidden";
+      }
+
+      // Function to close modal
+      function closeModal() {
+        console.log("Closing modal");
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
+      }
+
+      // Add event listeners to all View Details buttons
+      viewDetailsBtns.forEach((button, index) => {
+        console.log(`Setting up button ${index + 1}:`, button);
+
+        // Add click event listener
+        button.addEventListener("click", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          console.log("Button clicked:", this);
+          const programName = this.getAttribute("data-program");
+          const iconClass = this.getAttribute("data-icon");
+          console.log("Data:", { programName, iconClass });
+          openModal(programName, iconClass);
+        });
+
+        // Add a test class to confirm button is styled properly
+        button.classList.add("test-button-active");
+      });
+
+      // Close modal when clicking X button
+      closeModalBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        closeModal();
+      });
+
+      // Close modal when clicking outside
+      modal.addEventListener("click", function (event) {
+        if (event.target === modal) {
+          closeModal();
+        }
+      });
+
+      // Close modal with Escape key
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && modal.style.display === "block") {
+          closeModal();
+        }
+      });
+
+      // Update current year in footer
+      document.getElementById("current-year").textContent =
+        new Date().getFullYear();
+
+      // Add some debug styling to confirm buttons are visible
+      const style = document.createElement("style");
+      style.textContent = `
+        .test-button-active {
+          border: 2px solid green !important;
+          position: relative;
+        }
+        .test-button-active::after {
+          content: "✓";
+          position: absolute;
+          top: -5px;
+          right: -5px;
+          background: green;
+          color: white;
+          width: 15px;
+          height: 15px;
+          border-radius: 50%;
+          font-size: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      `;
+      document.head.appendChild(style);
+
+      console.log("Programs page script loaded successfully");
+    </script>
   </body>
 </html>
-
