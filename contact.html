@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us - Lowveld Institute</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <!-- Add floating button CSS -->
+    <link rel="stylesheet" href="css/whatsapp-float.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Floating WhatsApp Button - Will be populated by JavaScript -->
+    <div class="whatsapp-float" id="whatsapp-float">
+      <!-- JavaScript will insert content here -->
+    </div>
+
+    <!-- Navigation -->
+    <header class="header">
+      <div class="container">
+        <nav class="navbar">
+          <a href="index.html" class="logo">
+            <img
+              src="images/Logo.png"
+              alt="Lowveld Institute Logo"
+              class="logo-image"
+            />
+            <div class="logo-text">
+              <div class="logo-name">LOWVELD INSTITUTE</div>
+              <div class="logo-tagline">
+                Amplifying potential & creating opportunities
+              </div>
+            </div>
+          </a>
+
+          <ul class="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="programs.html">Programs</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+          </ul>
+
+          <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Page Title -->
+    <section class="page-title">
+      <div class="container">
+        <h1>Get In Touch</h1>
+        <p>
+          We'd love to hear from you. Reach out for program information or
+          general inquiries.
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+      <div class="container">
+        <div class="contact-container">
+          <!-- Left Column - Contact Form -->
+          <div class="contact-form">
+            <h2>Send us a Message</h2>
+            <form id="contactForm">
+              <div class="form-group">
+                <label for="name">Full Name *</label>
+                <input type="text" id="name" name="name" required />
+                <div class="error-message" id="name-error"></div>
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" required />
+                <div class="error-message" id="email-error"></div>
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Phone Number (Optional)</label>
+                <input type="tel" id="phone" name="phone" />
+              </div>
+
+              <div class="form-group">
+                <label for="program">Program of Interest</label>
+                <select id="program" name="program">
+                  <option value="">Select a program</option>
+                  <option value="employability">
+                    Employability & Life Skills Workshops
+                  </option>
+                  <option value="cv">CV Writing & Optimization</option>
+                  <option value="interview">
+                    Interview Preparation & Coaching
+                  </option>
+                  <option value="application">
+                    Job Application Assistance
+                  </option>
+                  <option value="digital">Digital Job Search Strategies</option>
+                  <option value="other">Other/General Inquiry</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="subject">Subject *</label>
+                <input type="text" id="subject" name="subject" required />
+                <div class="error-message" id="subject-error"></div>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Message *</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  required
+                ></textarea>
+                <div class="error-message" id="message-error"></div>
+              </div>
+
+              <div class="form-note">
+                <p>
+                  <i class="fas fa-info-circle"></i> For specific program
+                  inquiries, please mention the program name in your message.
+                </p>
+              </div>
+
+              <div class="form-group form-checkbox">
+                <input type="checkbox" id="newsletter" name="newsletter" />
+                <label for="newsletter"
+                  >Subscribe to our newsletter for updates on workshops and
+                  opportunities</label
+                >
+              </div>
+
+              <div class="form-status" id="form-status"></div>
+
+              <button type="submit" class="btn btn-primary">
+                <span id="submit-text">Send Message</span>
+                <span
+                  id="submit-loading"
+                  class="loading-spinner"
+                  style="display: none"
+                >
+                  <i class="fas fa-spinner fa-spin"></i> Sending...
+                </span>
+              </button>
+            </form>
+          </div>
+
+          <!-- Right Column - Contact Info & Map -->
+          <div class="contact-info">
+            <h2>Contact Information</h2>
+
+            <div class="info-item">
+              <div class="info-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="info-content">
+                <h3>Email</h3>
+                <p data-contact="email">info@lowveldinstitute.co.za</p>
+                <a href="mailto:info@lowveldinstitute.co.za" class="info-link"
+                  ><i class="fas fa-envelope"></i> Send Email</a
+                >
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon">
+                <i class="fab fa-whatsapp"></i>
+              </div>
+              <div class="info-content">
+                <h3>WhatsApp</h3>
+                <p>Quick chat support</p>
+                <a
+                  href="#"
+                  data-contact="whatsapp"
+                  data-text="Message on WhatsApp"
+                  class="info-link"
+                >
+                  <i class="fab fa-whatsapp"></i>
+                  <span>Message on WhatsApp</span>
+                </a>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div class="info-content">
+                <h3>Phone</h3>
+                <p>
+                  <a href="#" data-contact="phone" class="phone-link"></a>
+                </p>
+                <p>
+                  Emergency:
+                  <a href="#" data-contact="emergency" class="phone-link"></a>
+                </p>
+                <a href="#" data-contact="phone" class="info-link">
+                  <i class="fas fa-phone"></i> Call Now
+                </a>
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="info-content">
+                <h3>Address</h3>
+                <p data-contact="address">
+                  Bester Brown Building, Paul Kruger Street, Mbombela Central,
+                  1201
+                </p>
+                <a
+                  href="https://maps.google.com/?q=Bester+Brown+Building+Paul+Kruger+Street+Mbombela+Central+1201"
+                  target="_blank"
+                  class="info-link"
+                  ><i class="fas fa-directions"></i> Get Directions</a
+                >
+              </div>
+            </div>
+
+            <div class="info-item">
+              <div class="info-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="info-content">
+                <h3>Office Hours</h3>
+                <p>Monday - Friday: 8:00 AM - 5:00 PM</p>
+                <p>Saturday: 9:00 AM - 1:00 PM (Workshop days)</p>
+                <p>Sunday: Closed</p>
+              </div>
+            </div>
+
+            <div class="map-container">
+              <h3>Find Us</h3>
+              <div class="map-placeholder">
+                <!-- Google Maps Embed -->
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3602.013602901674!2d30.97316247561552!3d-25.471221234524492!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ee84a0ff41aa4c7%3A0xa4568e3291d7216a!2sBester%20Brown%20Building!5e0!3m2!1sen!2sza!4v1767174813491!5m2!1sen!2sza"
+                  width="100%"
+                  height="300"
+                  style="border: 0"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                  title="Lowveld Institute Location"
+                  class="google-map-embed"
+                >
+                </iframe>
+              </div>
+              <div class="map-credits">
+                <i class="fas fa-map-marked-alt"></i> View on
+                <a
+                  href="https://maps.google.com/?q=Bester+Brown+Building+Paul+Kruger+Street+Mbombela+Central+1201"
+                  target="_blank"
+                  >Google Maps</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+      <div class="container">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question">
+              How do I register for a workshop?
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>
+                You can register by contacting us via this form, email, or
+                phone. Please mention which workshop you're interested in, and
+                we'll send you registration details and available dates.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              Do you offer one-on-one coaching?
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Yes, we offer personalized one-on-one coaching sessions for CV
+                reviews, interview preparation, and career guidance. Contact us
+                to schedule an appointment.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <h3>Lowveld Institute</h3>
+            <p>Amplifying potential & creating opportunities for all.</p>
+          </div>
+
+          <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="programs.html">Programs</a></li>
+              <li><a href="gallery.html">Gallery</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-contact">
+            <h4>Contact Info</h4>
+            <p>
+              <i class="fas fa-map-marker-alt"></i>
+              <span data-contact="address"
+                >Bester Brown Building, Paul Kruger Street, Mbombela Central,
+                1201</span
+              >
+            </p>
+            <p>
+              <i class="fas fa-envelope"></i>
+              <span data-contact="email">info@lowveldinstitute.co.za</span>
+            </p>
+            <p>
+              <i class="fas fa-phone"></i>
+              <a href="#" data-contact="phone" class="phone-link"></a>
+            </p>
+            <p>
+              <i class="fab fa-whatsapp"></i>
+              <a
+                href="#"
+                data-contact="whatsapp"
+                data-text="WhatsApp"
+                class="phone-link"
+              >
+                <span>WhatsApp: </span>
+              </a>
+            </p>
+          </div>
+
+          <div class="footer-social">
+            <h4>Follow Us</h4>
+            <div class="social-icons">
+              <a href="#" aria-label="Facebook"
+                ><i class="fab fa-facebook"></i
+              ></a>
+              <a href="#" aria-label="Twitter"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a href="#" aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" aria-label="LinkedIn"
+                ><i class="fab fa-linkedin"></i
+              ></a>
+              <a href="#" aria-label="YouTube"
+                ><i class="fab fa-youtube"></i
+              ></a>
+              <a
+                href="#"
+                data-contact="whatsapp"
+                aria-label="WhatsApp"
+                class="whatsapp-icon"
+              >
+                <i class="fab fa-whatsapp"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; <span id="current-year"></span> Lowveld Institute. All rights
+            reserved. | Since 2014, Registered 2022
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Load config first, then main.js -->
+    <script src="js/config.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Create WhatsApp floating button
+        const whatsappFloat = document.getElementById("whatsapp-float");
+        if (whatsappFloat) {
+          whatsappFloat.innerHTML = `
+                <a href="${getWhatsAppUrl()}" 
+                   target="_blank" 
+                   class="whatsapp-float-link"
+                   aria-label="Chat with us on WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <div class="whatsapp-float-text">Chat with us</div>
+            `;
+        }
+
+        // Update all WhatsApp links on the page
+        const whatsappLinks = document.querySelectorAll(
+          '[data-contact="whatsapp"]'
+        );
+        whatsappLinks.forEach((link) => {
+          link.href = getWhatsAppUrl();
+          // Update text if specified
+          const linkText = link.getAttribute("data-text");
+          if (linkText && link.querySelector("span")) {
+            link.querySelector("span").textContent = linkText;
+          } else if (linkText) {
+            link.textContent = linkText;
+          }
+        });
+
+        // Update all phone links
+        const phoneLinks = document.querySelectorAll('[data-contact="phone"]');
+        phoneLinks.forEach((link) => {
+          link.href = `tel:${siteConfig.phoneNumber}`;
+          if (!link.textContent.trim() || link.textContent.includes("+27")) {
+            link.textContent = siteConfig.phoneNumber;
+          }
+        });
+
+        // Update emergency phone links
+        const emergencyLinks = document.querySelectorAll(
+          '[data-contact="emergency"]'
+        );
+        emergencyLinks.forEach((link) => {
+          link.href = `tel:${siteConfig.emergencyNumber}`;
+          if (!link.textContent.trim() || link.textContent.includes("+27")) {
+            link.textContent = siteConfig.emergencyNumber;
+          }
+        });
+
+        // Update email elements
+        const emailElements = document.querySelectorAll(
+          '[data-contact="email"]'
+        );
+        emailElements.forEach((element) => {
+          if (element.tagName === "A") {
+            element.href = `mailto:${siteConfig.email}`;
+          }
+          if (
+            !element.textContent.trim() ||
+            element.textContent.includes("@")
+          ) {
+            element.textContent = siteConfig.email;
+          }
+        });
+
+        // Update address elements
+        const addressElements = document.querySelectorAll(
+          '[data-contact="address"]'
+        );
+        addressElements.forEach((element) => {
+          if (!element.textContent.trim()) {
+            element.textContent = siteConfig.address;
+          }
+        });
+
+        // Update current year in footer
+        const currentYear = new Date().getFullYear();
+        const yearElement = document.getElementById("current-year");
+        if (yearElement) {
+          yearElement.textContent = currentYear;
+        }
+      });
+    </script>
+  </body>
+</html>

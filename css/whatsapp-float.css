@@ -1,0 +1,116 @@
+/* whatsapp-float.css */
+/* Floating WhatsApp Button Styles */
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1000;
+  animation: float 3s ease-in-out infinite;
+}
+
+.whatsapp-float-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background-color: #25d366;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+  color: white;
+  font-size: 32px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.whatsapp-float-link:hover {
+  background-color: #128c7e;
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+}
+
+.whatsapp-float-text {
+  position: absolute;
+  right: 70px;
+  background: #25d366;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.whatsapp-float-text:before {
+  content: "";
+  position: absolute;
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 8px 0 8px 8px;
+  border-style: solid;
+  border-color: transparent transparent transparent #25d366;
+}
+
+.whatsapp-float:hover .whatsapp-float-text {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* WhatsApp icon in footer */
+.social-icons .whatsapp-icon {
+  background-color: #25d366;
+  color: white;
+}
+
+.social-icons .whatsapp-icon:hover {
+  background-color: #128c7e;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .whatsapp-float {
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .whatsapp-float-link {
+    width: 55px;
+    height: 55px;
+    font-size: 28px;
+  }
+
+  .whatsapp-float-text {
+    display: none; /* Hide text on mobile for cleaner look */
+  }
+}
+
+@media (max-width: 480px) {
+  .whatsapp-float {
+    bottom: 15px;
+    right: 15px;
+  }
+
+  .whatsapp-float-link {
+    width: 50px;
+    height: 50px;
+    font-size: 26px;
+  }
+}

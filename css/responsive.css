@@ -1,0 +1,345 @@
+/* ==========================================================================
+   Responsive Styles for Lowveld Institute Website
+   ========================================================================== */
+
+/* Tablet Styles (992px and below) */
+@media (max-width: 992px) {
+  .programs-grid,
+  .mv-grid,
+  .values-grid,
+  .testimonials-grid,
+  .footer-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero-content h2 {
+    font-size: 2.5rem;
+  }
+
+  .hero-content p {
+    font-size: 1.2rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .slide-nav {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  /* Map Section */
+  .map-section {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  #map {
+    height: 350px;
+  }
+}
+
+/* Mobile Styles (768px and below) */
+@media (max-width: 768px) {
+  /* Navigation */
+  .hamburger {
+    display: block;
+  }
+
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  .nav-menu {
+    position: fixed;
+    left: -100%;
+    top: 80px;
+    flex-direction: column;
+    background-color: white;
+    width: 100%;
+    text-align: center;
+    transition: 0.3s;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    padding: 20px 0;
+  }
+
+  .nav-menu.active {
+    left: 0;
+  }
+
+  .nav-menu li {
+    margin: 15px 0;
+  }
+
+  /* Layout Adjustments */
+  .contact-container {
+    grid-template-columns: 1fr;
+  }
+
+  .programs-grid,
+  .mv-grid,
+  .values-grid,
+  .testimonials-grid,
+  .gallery-grid,
+  .footer-content {
+    grid-template-columns: 1fr;
+  }
+
+  /* Typography */
+  .logo-name {
+    font-size: 1.2rem;
+  }
+
+  .page-title h1 {
+    font-size: 2rem;
+  }
+
+  .hero {
+    padding: 120px 0 80px;
+  }
+
+  .hero-content h2 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+  }
+
+  section {
+    padding: 50px 0;
+  }
+
+  /* Slideshow */
+  .slide-nav {
+    width: 35px;
+    height: 35px;
+    display: none; /* Hide arrows on mobile */
+  }
+
+  .slide-dots {
+    bottom: 20px;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  /* Map Section */
+  .info-box {
+    padding: 25px;
+  }
+
+  #map {
+    height: 300px;
+  }
+
+  .map-info h3 {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+  }
+}
+
+/* Small Mobile Styles (480px and below) */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  /* Typography */
+  .hero-content h2 {
+    font-size: 1.8rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+    margin-bottom: 25px;
+  }
+
+  .page-title h1 {
+    font-size: 1.8rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  /* Buttons */
+  .btn {
+    padding: 10px 20px;
+  }
+
+  /* Cards */
+  .program-card,
+  .mv-card,
+  .testimonial-card,
+  .value-card {
+    padding: 20px;
+  }
+
+  /* Footer */
+  .footer-content {
+    gap: 30px;
+  }
+
+  /* Slideshow */
+  .hero {
+    padding: 100px 0 60px;
+  }
+
+  .slide-dots {
+    bottom: 15px;
+  }
+
+  /* Map Section */
+  .info-box {
+    padding: 20px;
+  }
+
+  .info-box .info-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .info-box .info-item i {
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+
+  #map {
+    height: 250px;
+  }
+}
+
+/* Additional Responsive Optimizations */
+@media (max-width: 1200px) {
+  .container {
+    max-width: 95%;
+  }
+}
+
+@media (max-width: 576px) {
+  /* Program Cards */
+  .program-card {
+    padding: 15px;
+  }
+
+  .program-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+  }
+
+  .program-title {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+  }
+
+  .feature-item {
+    margin-bottom: 10px;
+    padding: 6px 0;
+  }
+
+  .feature-item i {
+    font-size: 0.9rem;
+  }
+
+  .feature-item span {
+    font-size: 0.85rem;
+  }
+
+  /* Footer */
+  .footer-logo h3 {
+    font-size: 1.4rem;
+  }
+
+  .footer-links h4,
+  .footer-contact h4,
+  .footer-social h4 {
+    font-size: 1.1rem;
+  }
+
+  .footer-social .social-icons a {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+}
+
+/* Landscape Orientation for Tablets and Phones */
+@media (max-height: 600px) and (orientation: landscape) {
+  .hero {
+    min-height: 400px;
+    padding: 100px 0;
+  }
+
+  .nav-menu {
+    top: 70px;
+    padding: 10px 0;
+    max-height: 70vh;
+    overflow-y: auto;
+  }
+
+  .nav-menu li {
+    margin: 8px 0;
+  }
+}
+
+/* High-DPI Screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .logo-image {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .header,
+  .footer,
+  .btn,
+  .slide-nav,
+  .slide-dots,
+  .hamburger {
+    display: none !important;
+  }
+
+  body {
+    color: black;
+    background: white;
+  }
+
+  .container {
+    width: 100%;
+    max-width: none;
+  }
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  .program-card,
+  .mv-card,
+  .testimonial-card {
+    break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+}
